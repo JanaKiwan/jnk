@@ -1,13 +1,6 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[28]:
 
 
 import streamlit as st
-
-
-# In[29]:
 
 
 import pandas as pd
@@ -45,14 +38,11 @@ import warnings
 warnings.filterwarnings("ignore")
 
 
-# In[49]:
 
 
 data=pd.read_csv("healthcare-dataset-stroke-data.csv")
 data = data.loc[data.gender != "Other"]
 
-
-# In[34]:
 
 
 #Bar Chart - gender distribution
@@ -75,8 +65,6 @@ plt.title('Gender Distribution')
 st.pyplot()
 
 
-# In[38]:
-
 
 
 # Create a histogram of age distribution
@@ -91,7 +79,6 @@ plt.title('Age Distribution')
 st.pyplot()
 
 
-# In[40]:
 
 
 # Count the occurrences of hypertension
@@ -107,7 +94,6 @@ plt.title('Hypertension Distribution')
 st.pyplot()
 
 
-# In[41]:
 
 
 # Group the data by age and calculate average glucose level
@@ -125,7 +111,6 @@ plt.title('Average Glucose Level by Age')
 st.pyplot()
 
 
-# In[43]:
 
 
 # Create a box plot
@@ -143,7 +128,6 @@ plt.xticks(rotation=45)
 st.pyplot()
 
 
-# In[44]:
 
 
 # Create a scatter plot
@@ -158,8 +142,6 @@ plt.title('Age vs. Average Glucose Level')
 st.pyplot()
 
 
-# In[47]:
-
 
 import plotly.express as px
 # Create a stacked bar chart
@@ -170,7 +152,6 @@ stacked_bar_chart.update_layout(barmode='stack')
 st.plotly_chart(stacked_bar_chart)
 
 
-# In[48]:
 
 
 # Create a violin plot
@@ -185,7 +166,6 @@ plt.title('BMI Distribution for Individuals with and without Stroke')
 st.pyplot()
 
 
-# In[51]:
 
 
 #correlation between age, average glucose level, and BMI using Seaborn
@@ -205,8 +185,6 @@ plt.title('Correlation Heatmap')
 st.pyplot()
 
 
-# In[52]:
-
 
 # Count the occurrences of marital status
 marital_counts = data['ever_married'].value_counts()
@@ -221,7 +199,6 @@ fig.update_layout(title_text='Marital Status Distribution')
 st.plotly_chart(fig)
 
 
-# In[58]:
 
 
 # Categorical variables for analysis
@@ -248,7 +225,7 @@ if __name__ == "__main__":
     main()
 
 
-# In[ ]:
+
 
 
 
