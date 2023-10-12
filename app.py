@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
-
+Share it on the web (you may use streamlit cloud community sharing or Heroku), and put the link to your application in the assignment submission textbox.  This tutorial can
 import streamlit as st
 import pandas as pd
 from pandas_profiling import ProfileReport as PR
@@ -181,3 +181,31 @@ def main():
 
 if __name__ == "__main__":
     main()
+def main():
+    st.title("Proportion of Strokes in Categorical Variables")
+
+    # Interactive Feature 1: Filter data by age
+    min_age = st.slider("Select minimum age:", int(data["age"].min()), int(data["age"].max()), int(data["age"].min()))
+    max_age = st.slider("Select maximum age:", int(data["age"].min()), int(data["age"].max()), int(data["age"].max()))
+    filtered_data = data[(data["age"] >= min_age) & (data["age"] <= max_age)]
+
+    # Display the proportion of strokes for each categorical variable
+    for var in catVars:
+        proportions = strokeProportion(filtered_data, var)
+        st.subheader(f"Proportion of Strokes by {var}")
+        st.bar_chart(proportions)
+def main():
+    st.title("Proportion of Strokes in Categorical Variables")
+
+    # Interactive Feature 1: Filter data by age
+    min_age = st.slider("Select minimum age:", int(data["age"].min()), int(data["age"].max()), int(data["age"].min()))
+    max_age = st.slider("Select maximum age:", int(data["age"].min()), int(data["age"].max()), int(data["age"].max()))
+    filtered_data = data[(data["age"] >= min_age) & (data["age"] <= max_age)]
+
+    # Interactive Feature 2: Choose a categorical variable
+    selected_variable = st.selectbox("Select a categorical variable:", catVars)
+
+    # Display the proportion of strokes for the selected variable
+    proportions = strokeProportion(filtered_data, selected_variable)
+    st.subheader(f"Proportion of Strokes by {selected_variable}")
+    st.bar_chart(proportions)
